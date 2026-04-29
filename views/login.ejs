@@ -1,0 +1,17 @@
+<!-- index.ejs -->
+<html>
+  <head>
+    <title>Homepage</title>
+  </head>
+  <body>
+    <form action="/login" method="POST">
+      <label for="username">Username</label>
+      <input id="username" name="username" placeholder="username" type="text" />
+      <label for="password">Password</label>
+      <input id="password" name="password" type="password" />
+      <button type="submit">Login</button>
+    </form>
+
+    Not a member? <a href="/auth/signup">Sign up</a>
+  </body>
+</html>
