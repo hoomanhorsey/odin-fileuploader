@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <% if (user) {%>
+    <h1>WELCOME BACK TO THE DASHBOARD<%= locals.user.username %> 
+    </h1>
+     <a href="/drive/upload">Upload a file</a>
+    <a href="/log-out">LOG OUT</a>
+  <% } else { %>
+    Hello
+      <%}%>
+</body>
+</html>

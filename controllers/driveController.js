@@ -1,7 +1,5 @@
 // controllers/authorController.js
 
-const authRepository = require("../repositories/authRepository");
-
 // const db = require("../db");
 
 // async function getAuthorById(req, res) {
@@ -16,11 +14,11 @@ const authRepository = require("../repositories/authRepository");
 
 //   res.send(`Author Name: ${author.name}`);
 // }
-async function authFunction(req, res) {
+async function indexFolders(req, res) {
   try {
     //insert logic
-    console.log("Now we should display login view");
-    res.render("login");
+    console.log("Now we should display folder index");
+    res.render("folders");
   } catch (error) {
     console.log("somekind of error in genFunction");
     res
@@ -30,11 +28,11 @@ async function authFunction(req, res) {
   //insert logic of function here
 }
 
-async function loginDisplay(req, res) {
+async function showFolder(req, res) {
   try {
     //insert logic
-    console.log("Now we should display login view");
-    res.render("login");
+    console.log("Now we should display onefolder");
+    res.render("file");
   } catch (error) {
     console.log("somekind of error in genFunction");
     res
@@ -43,11 +41,11 @@ async function loginDisplay(req, res) {
   }
   //insert logic of function here
 }
-async function loginHandle(req, res) {
+async function showFile(req, res) {
   try {
     //insert logic
-    console.log("Now we should display login view");
-    res.render("login");
+    console.log("Now we should display file  view");
+    res.render("file", { fileId: req.params.fileId });
   } catch (error) {
     console.log("somekind of error in genFunction");
     res
@@ -57,29 +55,17 @@ async function loginHandle(req, res) {
   //insert logic of function here
 }
 
-async function signupDisplay(req, res) {
+async function showUploadForm(req, res) {
   try {
     //insert logic
-    console.log("Now we should display login view");
-    res.render("signup");
+    console.log("Now we should display the upoload form");
+    res.render("upload");
   } catch (error) {
-    console.log("somekind of error in genFunction");
+    console.log("somekind of error in upload function");
     res
       .status(500)
       .send("Internal Server error or may need to customise error message");
   }
   //insert logic of function here
 }
-async function signupHandle(req, res) {
-  try {
-    console.table(req.body);
-
-    await authRepository.createUser(req.body);
-    res.redirect("login");
-  } catch (error) {
-    console.error(error);
-    res.status(500).send("Something went wrong please try again");
-  }
-}
-
-module.exports = { loginDisplay, loginHandle, signupDisplay, signupHandle };
+module.exports = { indexFolders, showFolder, showFile, showUploadForm };

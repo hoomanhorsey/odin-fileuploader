@@ -1,6 +1,8 @@
 // routes/router.js
 const { Router } = require("express");
 
+const passport = require("passport");
+
 const authRouter = Router();
 const authController = require("../controllers/authController");
 
@@ -11,7 +13,13 @@ const authController = require("../controllers/authController");
 // });
 
 authRouter.get("/login", authController.loginDisplay);
-authRouter.post("/login", authController.loginHandle);
+authRouter.post(
+  "/login",
+  passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/auth/login",
+  }),
+);
 authRouter.get("/signup", authController.signupDisplay);
 
 authRouter.post("/signup", authController.signupHandle);

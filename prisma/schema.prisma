@@ -15,8 +15,8 @@ datasource db {
 model User { 
   id    Int     @id @default(autoincrement()) 
   email String  @unique
-  name  String?
-  passwordHash String
+  username  String @unique
+  password String
   files File[]
 } 
 
@@ -26,4 +26,11 @@ model File {
   content   String?
   fileOwner User    @relation(fields: [fileOwnerId], references: [id])
   fileOwnerId Int
+}
+
+model Session {
+  id        String   @id
+  sid       String   @unique
+  data      String   
+  expiresAt   DateTime
 }

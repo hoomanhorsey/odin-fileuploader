@@ -4,6 +4,14 @@
     <title>Homepage</title>
   </head>
   <body>
+
+    <% if (user) {%>
+    <h1>WELCOME BACK <%= locals.user.username %> 
+    </h1>
+    <a href="/log-out">LOG OUT</a>
+  <% } else { %>
     Hello
+      <%}%>
+
   </body>
 </html>

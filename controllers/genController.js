@@ -18,7 +18,8 @@ async function genFunction(req, res) {
   try {
     //insert logic
     console.log("genController is working");
-    res.render("index");
+    console.log(req.user);
+    res.render("index", { user: req.user });
   } catch (error) {
     console.log("somekind of error in genFunction");
     res
