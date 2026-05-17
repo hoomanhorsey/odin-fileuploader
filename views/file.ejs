@@ -4,7 +4,12 @@
     <title>Homepage</title>
   </head>
   <body>
-    File page / Later you want to insert upload file download file delete file
-    rename file attach file to a folder. File ID <%= fileId %>
+    <a href="/drive/folder/<%= folderId %>">[back to Drive]</a>
+    <div><%= fileDetails.id %></div>
+    <div><%= fileDetails.originalName %></div>
+    <div><%= fileDetails.uploadedAt %></div>
+    <div><%= fileDetails.fileName %></div>
+    <div><%= fileDetails.path %></div>
+    <div><%= fileDetails.size %></div>
   </body>
 </html>

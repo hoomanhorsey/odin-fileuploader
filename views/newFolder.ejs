@@ -1,0 +1,19 @@
+<!-- index.ejs -->
+<html>
+  <head>
+    <title>Add New Folder</title>
+  </head>
+  <body>
+    <form action="/drive/newFolder" method="POST">
+      <label for="newFolderName">Name of new folder</label>
+      <input
+        id="newFolderName"
+        name="newFolderName"
+        placeholder="Insert folder name"
+        type="text"
+      />
+
+      <button type="submit">Submit</button>
+    </form>
+  </body>
+</html>

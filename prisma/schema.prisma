@@ -18,14 +18,30 @@ model User {
   username  String @unique
   password String
   files File[]
+  folders Folder[]
 } 
 
 model File {
   id        Int     @id @default(autoincrement()) 
-  title     String
-  content   String?
+  originalName String
+  mimetype String
+  size Int
+  path String
+  fileName String 
+  uploadedAt DateTime @default(now())
   fileOwner User    @relation(fields: [fileOwnerId], references: [id])
   fileOwnerId Int
+  folderOwner Folder    @relation(fields: [folderOwnerId], references: [id])
+  folderOwnerId Int
+}
+
+model Folder {
+  id        Int     @id @default(autoincrement()) 
+  title     String
+  content   String?
+  folderOwner User    @relation(fields: [folderOwnerId], references: [id])
+  folderOwnerId Int
+  files File[]
 }
 
 model Session {

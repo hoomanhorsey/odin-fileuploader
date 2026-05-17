@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+        <% if (user) {%>
+    <h1>WELCOME BACK TO THE DASHBOARD USERNAME -><%= locals.user.username %> 
+    </h1>
+
+    <div>
+      <ul>
+        <% folders.forEach(folder => { %>
+          <li>
+  <h2> <a href="/drive/folder/<%= folder.id %>"><%= folder.title %>.  <%= folder.id %></a> </h2>
+          </li>
+        <% }) %>
+    </ul>
+    </div>
+
+    <div>
+     <a href="/drive/newFolder">Add a folder</a>
+     <a href="/drive/upload">Add a file</a>
+    <a href="/log-out">Log out</a>
+    </div>
+  <% } else { %>
+    Please log in to access your files.
+      <% } %>
+</body>
+</html>

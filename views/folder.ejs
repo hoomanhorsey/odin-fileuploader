@@ -1,0 +1,60 @@
+<!-- index.ejs -->
+<html>
+  <head>
+    <title>Homepage</title>
+  </head>
+  <body>
+<div>
+   <a href="/drive">[back to Drive]</a>
+</div>
+      <% if (editing) { %>
+    <form action="/drive/folder/<%= folder.id %>/rename" method="post" style="display:inline">
+      <input name="name" value="<%= folder.title %>" required maxlength="255" />
+      <button type="submit">Save</button>
+      <a href="/drive/folder/<%= folder.id %>">Cancel</a>
+    </form>
+
+      <% } else { %>
+    <span style="font-size: 24px;" > <%= folder.title %></span>
+    <a href="/drive/folder/<%= folder.id %>?editing=1">[edit folder name]</a>
+  <% } %>
+
+
+    
+
+    <div>
+      
+        Files - include file info and delete button
+      <ul>
+        <% folder.files.forEach(file =>
+        { %>
+        
+          <li>
+            <span><a href="/drive/folder/<%= folder.id %>/file/<%= file.id %>"> <%= file.originalName %></a> </span>
+            <form action="/drive/folder/<%= folder.id %>/file/<%= file.id %>" method="POST" style="display: inline;">
+            <button type="submit" onclick="return confirm('Delete this file?')">
+            [delete file]
+            </button>
+          </form>
+          </li>
+        <% })%> 
+
+      
+      </ul>
+    </div>
+    <div>
+      Upload files
+      <form
+        action="/drive/folder/<%= folder.id %>/"
+        method="post"
+        enctype="multipart/form-data"
+      >
+        <input type="file" name="uploadedFile" />
+        <button type="submit">Upload</button>
+      </form>
+    </div>
+
+    <div>Delete Folder - functionality to be inserted</div>
+
+  </body>
+</html>

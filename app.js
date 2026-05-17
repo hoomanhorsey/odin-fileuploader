@@ -55,7 +55,7 @@ app.use("/drive", driveRouter);
 app.get("/", (req, res) => {
   if (req.user) {
     console.log("there is a user logged in");
-    return res.render("dashboard", { user: req.user });
+    return res.redirect("/drive");
   }
   res.redirect("/auth/login");
 });
